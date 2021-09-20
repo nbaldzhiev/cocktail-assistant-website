@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sorts Mill Goudy', serif;
+}
+
+body {
+    background-image: url('/images/oriental-tiles.png');
+}
+
+h1 {
+    margin: 0;
+    margin-top: 1em;
+    color: white;
+    font-size: 5rem;
+    text-align: center;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+}
+
+.random-cocktail-message {
+    color: cornsilk;
+    font-size: 2rem;
+}
+
+#random-button {
+    font-size: 2rem;
+    padding: 0.3em 1em 0.3em 1em;
+    border-radius: 15px;
+    border-style: none;
+    background-color: plum;
+    color: whitesmoke;
+}
+
+#random-button:hover {
+    cursor: pointer;
+}
+
+#random-button:active {
+    background-color: whitesmoke;
+    color: plum;
+}
+
+.cocktails-container {
+    display: flex;
+    justify-content: center;
+}
+
+.cocktail-item {
+    display: flex;
+    font-size: 2em;
+    color: white;
+}
+
+.cocktail-info {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.cocktail-info p {
+    margin: 0;
+    padding: 0;
+}
+
+.cocktail-name {
+    color: white;
+    background-color:goldenrod;
+}
+
+.cocktail-category {
+    background-color: green;
+}
+
+.cocktail-glass {
+    background-color:goldenrod;
+}
+
+.cocktail-instructions {
+    background-color: green;
+}
+
+.cocktail-thumbnail {
+    padding: 0;
+    font-size: 0;
+    width: 400px;
+    height: 400px;
+}
