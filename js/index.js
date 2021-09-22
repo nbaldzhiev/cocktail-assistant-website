@@ -36,6 +36,7 @@ document.getElementById('random-button').addEventListener('click', function() {
 })
 
 async function getCocktailsByIngredient(ingredientName) {
+    document.querySelector('.cocktails-container').innerHTML = `<img class='loading-gif' src='https://c.tenor.com/7NX24XoJX0MAAAAC/loading-fast.gif'></img>`;
     let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientName}`);
     let data = await response.json();
     let fullDetailCocktails = [];
