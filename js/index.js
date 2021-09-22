@@ -13,7 +13,6 @@ function getCocktailHtml(cocktail) {
             }
         }
     })
-    console.log(ingredients.join(''))
     return `
         <div class='cocktail-item'>
             <img class='cocktail-thumbnail' src='${cocktail.strDrinkThumb}'></img>
@@ -31,7 +30,33 @@ function getCocktailHtml(cocktail) {
 document.getElementById('random-button').addEventListener('click', function() {
     getRandomCocktail().then(
         (data) => {
-            document.querySelector('.cocktails-container').innerHTML = getCocktailHtml(data.drinks[0])
+            document.querySelector('.cocktails-container').innerHTML = getCocktailHtml(data.drinks[0]);
         }
     )
+})
+
+async function getCocktailsByIngredient(ingredientName) {
+    let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientName}`);
+    let data = await response.json();
+    let fullDetailCocktails = [];
+    for (const drink of data.drinks) {
+        let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`);
+        let data = await response.json();
+        fullDetailCocktails.push(data.drinks[0]);
+    }
+    return fullDetailCocktails;
+}
+
+document.getElementById('ingredient-input').addEventListener('keyup', function(event) {
+    if (event.key == 'Enter' || event.keyCode === 3) {
+        getCocktailsByIngredient(event.target.value).then(
+            (data) => {
+                let allCocktails = '';
+                for (cocktail of data) {
+                    allCocktails += getCocktailHtml(cocktail);
+                }
+                document.querySelector('.cocktails-container').innerHTML = allCocktails;
+            }
+        )
+    }
 })
