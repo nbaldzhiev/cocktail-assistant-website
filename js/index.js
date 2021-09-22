@@ -15,7 +15,7 @@ function getCocktailHtml(cocktail) {
     })
     return `
         <div class='cocktail-item'>
-            <img class='cocktail-thumbnail' src='${cocktail.strDrinkThumb}'></img>
+            <img class='cocktail-thumbnail' src='${cocktail.strDrinkThumb}'>
             <div class='cocktail-info'>
                 <p class='cocktail-name'>Name ... ${cocktail.strDrink}</p>
                 <p class='cocktail-category'>Category ... ${cocktail.strCategory}</p>
@@ -36,7 +36,7 @@ document.getElementById('random-button').addEventListener('click', function() {
 })
 
 async function getCocktailsByIngredient(ingredientName) {
-    document.querySelector('.cocktails-container').innerHTML = `<img class='loading-gif' src='https://c.tenor.com/7NX24XoJX0MAAAAC/loading-fast.gif'></img>`;
+    document.querySelector('.cocktails-container').innerHTML = `<img class='loading-gif' src='/images/white_loader.svg'>`;
     let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientName}`);
     let data = await response.json();
     let fullDetailCocktails = [];
