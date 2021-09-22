@@ -37,15 +37,20 @@ document.getElementById('random-button').addEventListener('click', function() {
 
 async function getCocktailsByIngredient(ingredientName) {
     document.querySelector('.cocktails-container').innerHTML = `<img class='loading-gif' src='./images/white_loader.svg'>`;
-    let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientName}`);
-    let data = await response.json();
-    let fullDetailCocktails = [];
-    for (const drink of data.drinks) {
-        let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`);
+    try {
+        let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientName}`);
         let data = await response.json();
-        fullDetailCocktails.push(data.drinks[0]);
+        let fullDetailCocktails = [];
+            for (const drink of data.drinks) {
+            let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`);
+            let data = await response.json();
+            fullDetailCocktails.push(data.drinks[0]);
+        }
+        return fullDetailCocktails;
+    } catch(e) {
+        document.querySelector('.cocktails-container').innerHTML = "";
+        return [];
     }
-    return fullDetailCocktails;
 }
 
 document.getElementById('ingredient-input').addEventListener('keyup', function(event) {
