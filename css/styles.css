@@ -121,6 +121,7 @@ h1 {
 
 .instructions {
     background-color:goldenrod;
+    flex-grow: 1;
 }
 
 @media (max-width: 768px) {
