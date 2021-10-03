@@ -1,6 +1,6 @@
 # Cocktail Assistant Website
 
-A very simple website to practice HTML, CSS, and vanilla JavaScript. The website's sole purpose is to practice FE development.
+A very simple website, hosted on [GitHub Pages](https://nbaldzhiev.github.io/cocktail-assistant-website/) to practice HTML, CSS, and vanilla JavaScript. The website's sole purpose is to practice FE development.
 
 ## Description
 
